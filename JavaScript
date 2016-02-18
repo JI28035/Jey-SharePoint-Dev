@@ -1,0 +1,102 @@
+
+Function CheckForm() 
+{
+CheckForm=True;
+  if(document.frm.txtComments.value.trim.length > 0){ 
+   document.frm.AddComment.value = "Yes";
+   document.frm.action="test.asp";
+  }else{ 
+   if(frm.txtPrev.value == "NO"){ 
+    Alert ("You have not entered a comment");
+    CheckForm=False;
+   } 
+  }   
+ } 
+
+--------------------------------------------------------------------------
+
+var value1;
+ value1= value1.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2});
+
+--------------------------------------------------------------------------
+
+var value;
+ value = "abc12344345";
+ select case Mode 
+ 
+ 
+  case "1"   
+   Value = Replace(value, ".", ""); 
+   if(value.length) >= 2 && !isNaN(value)){ 
+    test1;
+   } 
+  case "2" 
+   Value = Replace(value, ".", "");
+   if(value.length) >= 4 && !isNaN(value)){ 
+    test2;
+   } 
+  case "3" 
+   if(!isNaN(value)){ 
+    PassValue = Right("00000000" + value, 9);
+    test3;
+   }else if(value.trim.length)) == 0){    
+    value = "000000000"; 
+    test3;
+   } 
+  case "4" 
+   PassValue = Right("00000" + value, 5);
+   test4;
+ }  
+ 
+ 
+ ------------------------------------------------------------------- 
+
+Function ValidateForm() 
+{
+  ValidateForm = True;
+ 
+ 
+  if(document.frm.txtAmount.value.trim.length)) > 0){ 
+   strAmount = document.frm.txtAmount.value.trim;
+ 
+ 
+   //make sure it is numeric     
+   if(! !isNaN(strAmount)){ 
+    document.frm.action = "create.asp";
+   document.frm.txtError.value = "Yes";
+    return false;
+   }else{ 
+    //if(the user entered a decimal point. 
+    strAmount = CStr(CCur(strAmount));
+    intDecimalLocation = InStr(1, strAmount, ".");
+    if(intDecimalLocation > 0){ 
+     if(strAmount.length) - intDecimalLocation) > 2){ 
+      document.frm.action = "create.asp"; 
+      document.frm.txtError.value = "Yes"; 
+      return false;
+     }else{ 
+      //add extra zeros to make 2 places after the decimal point. 
+      if(strAmount.length) - intDecimalLocation) = 1){ 
+       strAmount = strAmount + "0"; 
+       document.frm.txtAmount.value = strAmount;
+      }       
+ 
+ 
+      //error if(negative        
+      if(strAmount.toFixed(1)) <= 0){ 
+       document.frm.action = "create.asp"; 
+       document.frm.txtError.value = "Yes"; 
+       return false;
+      } 
+     } 
+    }else{ 
+     //error if(negative        
+     if(strAmount.toFixed(1)) <= 0){ 
+      document.frm.action = "create.asp";
+      document.frm.txtError.value = "Yes"; 
+      return false;
+     } 
+    }      
+   }   
+  } 
+ } 
